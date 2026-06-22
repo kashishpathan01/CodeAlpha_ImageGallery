@@ -1,0 +1,322 @@
+/* Custom Properties / Theme Setup */
+:root {
+    --bg-primary: #0b0f19;
+    --bg-secondary: #131a26;
+    --accent-color: #6366f1;
+    --accent-hover: #4f46e5;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    padding: 40px 20px;
+    overflow-x: hidden;
+}
+
+/* Header Section */
+.gallery-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.gallery-header .sub-title {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.gallery-header h1 {
+    font-size: 2.8rem;
+    margin-top: 5px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.gallery-header .underline {
+    width: 50px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 15px auto 30px auto;
+    border-radius: 2px;
+}
+
+/* Modern Filter Buttons */
+.filter-wrapper {
+    display: inline-block;
+    background: var(--bg-secondary);
+    padding: 6px;
+    border-radius: 30px;
+    border: 1px solid var(--glass-border);
+}
+
+.filter-container {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 22px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: var(--transition-smooth);
+}
+
+.filter-btn:hover {
+    color: var(--text-main);
+}
+
+.filter-btn.active {
+    background: var(--accent-color);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Responsive Grid Structure */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Professional Card Design & Animations */
+.gallery-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    aspect-ratio: 4 / 5; /* Premium portrait frame */
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(11, 15, 25, 0.95) 0%, rgba(11, 15, 25, 0.4) 60%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.overlay-content {
+    transform: translateY(20px);
+    transition: var(--transition-smooth);
+    width: 100%;
+    text-align: left;
+}
+
+.category-tag {
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--accent-color);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 10px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.overlay-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 12px;
+}
+
+.view-icon {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+/* Hover States triggering */
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.06);
+}
+
+.gallery-item:hover .img-overlay {
+    opacity: 1;
+}
+
+.gallery-item:hover .overlay-content {
+    transform: translateY(0);
+}
+
+.gallery-item:hover .view-icon {
+    opacity: 1;
+}
+
+/* JS Interactive Classes (Smooth Filtering animation) */
+.gallery-item.fade-out {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+.gallery-item.hide {
+    display: none;
+}
+
+/* Glassmorphic Lightbox Overlay */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 10, 17, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Lightbox Components */
+.lightbox-top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lightbox-counter {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.lightbox-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.lightbox-close-btn:hover {
+    color: #ef4444;
+    transform: rotate(90deg);
+}
+
+.lightbox-content-box {
+    max-width: 85vw;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#lightbox-img {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    transform: scale(0.95);
+    transition: var(--transition-smooth);
+}
+
+.lightbox-overlay.active #lightbox-img {
+    transform: scale(1);
+}
+
+.lightbox-caption {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.lightbox-caption h3 {
+    font-size: 1.3rem;
+    margin-top: 5px;
+}
+
+/* Nav Controls */
+.lightbox-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    transition: var(--transition-smooth);
+}
+
+.lightbox-nav-btn:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+.prev-btn { left: 40px; }
+.next-btn { right: 40px; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .gallery-header h1 { font-size: 2.2rem; }
+    .prev-btn { left: 15px; }
+    .next-btn { right: 15px; }
+    .lightbox-nav-btn { width: 44px; height: 44px; }
+}
