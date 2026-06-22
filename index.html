@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Media Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="gallery-header">
+        <span class="sub-title">Explore My Work</span>
+        <h1>Kashish's Portfolio</h1>
+        <div class="underline"></div>
+        
+        <div class="filter-wrapper">
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="nature">Nature</button>
+                <button class="filter-btn" data-filter="architecture">Architecture</button>
+                <button class="filter-btn" data-filter="tech">Technology</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="gallery-grid">
+        <div class="gallery-item" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80" alt="Serene Mountain Peak" class="gallery-img">
+            <div class="img-overlay">
+                <div class="overlay-content">
+                    <span class="category-tag">Nature</span>
+                    <h3>Mountain Peak</h3>
+                    <i class="fa-solid fa-magnifying-glass-plus view-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="architecture">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Modern Minimalist House" class="gallery-img">
+            <div class="img-overlay">
+                <div class="overlay-content">
+                    <span class="category-tag">Architecture</span>
+                    <h3>Modern Villa</h3>
+                    <i class="fa-solid fa-magnifying-glass-plus view-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="tech">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80" alt="Cyber Security Data Stream" class="gallery-img">
+            <div class="img-overlay">
+                <div class="overlay-content">
+                    <span class="category-tag">Technology</span>
+                    <h3>Cyber Core</h3>
+                    <i class="fa-solid fa-magnifying-glass-plus view-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="nature">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80" alt="Sunlight Through Forest" class="gallery-img">
+            <div class="img-overlay">
+                <div class="overlay-content">
+                    <span class="category-tag">Nature</span>
+                    <h3>Misty Woods</h3>
+                    <i class="fa-solid fa-magnifying-glass-plus view-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="architecture">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80" alt="Urban Concrete Structure" class="gallery-img">
+            <div class="img-overlay">
+                <div class="overlay-content">
+                    <span class="category-tag">Architecture</span>
+                    <h3>Concrete Lines</h3>
+                    <i class="fa-solid fa-magnifying-glass-plus view-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="tech">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Microchip Circuit Board" class="gallery-img">
+            <div class="img-overlay">
+                <div class="overlay-content">
+                    <span class="category-tag">Technology</span>
+                    <h3>Quantum Board</h3>
+                    <i class="fa-solid fa-magnifying-glass-plus view-icon"></i>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="lightbox" class="lightbox-overlay">
+        <div class="lightbox-top-bar">
+            <div class="lightbox-counter">1 / 6</div>
+            <button class="lightbox-close-btn">&times;</button>
+        </div>
+        
+        <button class="lightbox-nav-btn prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+        
+        <div class="lightbox-content-box">
+            <img id="lightbox-img" src="" alt="Viewed Image">
+            <div class="lightbox-caption">
+                <span id="lightbox-category" class="category-tag">Category</span>
+                <h3 id="lightbox-title">Image Title</h3>
+            </div>
+        </div>
+        
+        <button class="lightbox-nav-btn next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
